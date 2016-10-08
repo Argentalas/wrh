@@ -1,0 +1,25 @@
+{
+	"timestamp": "",
+	"ip": "localhost",
+	"port": 8080,
+	"appName":"server",
+	"publicFolder": "public",
+	"saltRounds":10,
+	"modules":{
+		"utl":"./utl.js",
+		"db":"./db.js",
+		"api":"./api.js"
+	},
+	"typeDic":{
+		".txt":"text/plain",
+		".html":"text/html",
+		".htm":"text/html",
+		".css":"text/css",
+		".js":"application/javascript",
+		".json":"application/json",
+		".png":"image/png",
+		".svg":"image/svg+xml",
+		".ico":"image/x-icon",
+		"":"text/plain"
+	}
+}
