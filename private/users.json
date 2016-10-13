@@ -1,0 +1,15 @@
+{
+	"user": {
+		"token": "$2a$10$i30dJOfFKiasuk1TXDGlUeC4A8m53bMBe9sIOLiEjyzni0jdK9hrm",
+		"permissions": {
+			"register": true,
+			"echo": true
+		}
+	},
+	"adm": {
+		"token": "$2a$10$MVMSoHHRJggL4DwfLqEZI.OcXyX4DbMKJai2PWUsCu38JzEzS/Y6W",
+		"permissions": {
+			"any":true
+		}
+	}
+}
