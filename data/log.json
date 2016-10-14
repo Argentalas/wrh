@@ -212,5 +212,176 @@
 	"161007115124": [
 		"/api/echo/adm",
 		"127.0.0.1"
+	],
+	"161014151459": [
+		"wrh started at localhost:8080"
+	],
+	"161014151729": [
+		"/api/newname/adm",
+		"127.0.0.1"
+	],
+	"161014151749": [
+		"wrh started at localhost:8080"
+	],
+	"161014151754": [
+		"/api/newName/adm",
+		"127.0.0.1"
+	],
+	"161014152526": [
+		"wrh started at localhost:8080"
+	],
+	"161014152534": [
+		"/api/newname/adm",
+		"127.0.0.1"
+	],
+	"161014152609": [
+		"/api/newname/adm",
+		"127.0.0.1"
+	],
+	"161014152844": [
+		"/api/reload/adm",
+		"127.0.0.1"
+	],
+	"161014152845": [
+		"wrh started at localhost:8080"
+	],
+	"161014152937": [
+		"wrh started at localhost:8080"
+	],
+	"161014153516": [
+		"wrh started at localhost:8080"
+	],
+	"161014153823": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014153923": [
+		"wrh started at localhost:8080"
+	],
+	"161014153929": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014154037": [
+		"wrh started at localhost:8080"
+	],
+	"161014154042": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014154314": [
+		"wrh started at localhost:8080"
+	],
+	"161014154317": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014154619": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014154622": [
+		"wrh started at localhost:8080"
+	],
+	"161014154624": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014154629": [
+		"wrh started at localhost:8080"
+	],
+	"161014154654": [
+		"/api/newname/adm",
+		"127.0.0.1"
+	],
+	"161014154922": [
+		"/api/echo/adm",
+		"127.0.0.1"
+	],
+	"161014154958": [
+		"Unexpected end of input"
+	],
+	"161014155206": [
+		"wrh started at localhost:8080"
+	],
+	"161014155212": [
+		"Unexpected end of input"
+	],
+	"161014155224": [
+		"/api/echo/adm",
+		"127.0.0.1"
+	],
+	"161014155228": [
+		"/api/echo/adm",
+		"127.0.0.1"
+	],
+	"161014155302": [
+		"/api/newname/adm",
+		"127.0.0.1"
+	],
+	"161014155343": [
+		"/api/echo/adm",
+		"127.0.0.1"
+	],
+	"161014155351": [
+		"/api/echo/adm",
+		"127.0.0.1"
+	],
+	"161014155356": [
+		"wrh started at localhost:8080"
+	],
+	"161014155405": [
+		"success"
+	],
+	"161014155433": [
+		"Unexpected end of input"
+	],
+	"161014155500": [
+		"200 undefined"
+	],
+	"161014155625": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014155833": [
+		"wrh started at localhost:8080"
+	],
+	"161014155836": [
+		"Unexpected token :"
+	],
+	"161014155858": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014160434": [
+		"wrh started at localhost:8080"
+	],
+	"161014160443": [
+		"/api/transaction/adm",
+		"127.0.0.1"
+	],
+	"161014161030": [
+		"wrh started at localhost:8080"
+	],
+	"161014161037": [
+		"success"
+	],
+	"161014161238": [
+		"success"
+	],
+	"161014161432": [
+		"success"
+	],
+	"161014161739": [
+		"success"
+	],
+	"161014162151": [
+		"wrh started at localhost:8080"
+	],
+	"161014162204": [
+		"200 undefined"
+	],
+	"161014162233": [
+		"200 undefined"
 	]
 }
