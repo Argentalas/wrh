@@ -6,7 +6,7 @@ const path = require('path');
 const cfg = require('./config.json')
 const db = require('./db.js');
 
-module.exports = {
+ var utl = {
 	parseurl: parseurl,
 	log: log,
 	formatDate: formatDate,
@@ -15,6 +15,8 @@ module.exports = {
 	sendCode: sendCode,
 	send: send
 };
+
+module.exports = utl;
 
 //////////////////////////
 
@@ -74,6 +76,8 @@ function sendCode(code, text, res) {
 
 	res.writeHead(code, {'Content-Type':'text/plain'});
 	res.end(text || '');
+
+	utl.log(code + ' ' + text);
 };
 
 function send(data, res) {
@@ -82,4 +86,6 @@ function send(data, res) {
 	
 	res.writeHead(200, {'Content-Type':'application/json'});
 	res.end(JSON.stringify(data));
+
+	utl.log('success');
 }
