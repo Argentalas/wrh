@@ -7,6 +7,7 @@ const db = require('./db.js');
 var commands = {};
 
 commands.echo = echo;
+commands.newName = newName;
 
 module.exports = commands;
 
@@ -36,54 +37,84 @@ function newName(req, res) {
 };
 
 function transaction(req, res) {
-	var temp = {};
+
 	var tr = req.postData.transaction;
 
-	if (!(tr.name in db('names'))) {
+	if (!(tr.item.name in db('names'))) {
 		res.sendCode(400, 'item unknown');
 		return;
 	};
 
 	if (!(tr.place.name in db('names'))) {
 		res.sendCode(400, 'place unknown');
-		return
+		return;
 	};
 
+	var bad = true;
+
 	for (t in db('trans')) {
-		if (t.name === tr.place.name){
-			temp[t.id] = true;
+		if (tr.place.id === t.item.id){
+			bad = false;
+			break;
 		};
 	};
 
-	if (!(tr.place.id in temp)) {
+	if (bad) {
 		res.sendCode(400, 'no such place');
-		return
-	}
+		return;
+	};
 
-	if ((tr.amount + amount(tr.name, tr.id, tr.place)) < 0) {
+	if ((tr.amount + amount(tr.item, tr.place)) < 0) {
 		res.sendCode(400, 'invalid amount');
 		return;
 	};
 
 };
 
-function amount(name, id, place) {
+function amount(item, place) {
 	
 	var result = 0;
 	
-	if (place) {
-		for (t in db('trans')) {
-			if (name === t.name && id === t.id && place.name === t.place.name && place.id === t.place.id) {
-				result += t.amount;
-			}
+	// if (place) {
+	// 	for (t in db('trans')) {
+	// 		if (name === t.name && id === t.id && place.name === t.place.name && place.id === t.place.id) {
+	// 			result += t.amount;
+	// 		}
+	// 	}
+	// } else {
+	// 	for (t in db('trans')) {
+	// 		if (name === t.name && id === t.id) {
+	// 			result += t.amount;
+	// 		}
+	// 	}
+	// }	
+
+	var rule = generateRule(item, place);
+
+	for (t in db('trans')) {
+		if (rule(t)) {
+			result += t.amount;
 		}
-	} else {
-		for (t in db('trans')) {
-			if (name === t.name && id === t.id) {
-				result += t.amount;
+	};
+
+	function generateRule(item, place) {
+		var checks = [];
+		checks.push([item.name, 'item', 'name']);
+		if (item.id) {checks.push([item.id, 'item', 'id'])};
+		if (place) {
+			checks.push([place.name, 'place', 'name']);
+			checks.push([place.id, 'place', 'id']);
+		};
+
+		return function (t) {
+			for (var i = checks.length - 1; i >= 0; i--) {
+				if (checks[i][0] != t[checks[i][1]][checks[i][2]]){return false}
 			}
+			return true
 		}
-	}	
+	};
+
 
 	return result;
 };
+
