@@ -7,7 +7,8 @@ const db = require('./db.js');
 var commands = {};
 
 commands.echo = echo;
-commands.newName = newName;
+commands.newname = newname;
+commands.transaction = transaction;
 
 module.exports = commands;
 
@@ -23,7 +24,7 @@ function echo(request, response){
 	response.send(reply);
 };
 
-function newName(req, res) {
+function newname(req, res) {
 	
 	var name = req.postData.itemName;
 
@@ -51,9 +52,10 @@ function transaction(req, res) {
 	};
 
 	var bad = true;
+	var trans = db('trans');
 
-	for (t in db('trans')) {
-		if (tr.place.id === t.item.id){
+	for (t in trans) {
+		if (tr.place.id === trans[t].item.id){
 			bad = false;
 			break;
 		};
@@ -69,9 +71,14 @@ function transaction(req, res) {
 		return;
 	};
 
+	db('trans', utl.formatDate(Date.now()), tr);
+
+	res.sendCode(200);
 };
 
 function amount(item, place) {
+	
+	var trans = db('trans');
 	
 	var result = 0;
 	
@@ -91,9 +98,9 @@ function amount(item, place) {
 
 	var rule = generateRule(item, place);
 
-	for (t in db('trans')) {
-		if (rule(t)) {
-			result += t.amount;
+	for (t in trans) {
+		if (rule(trans[t])) {
+			result += trans[t].amount;
 		}
 	};
 
