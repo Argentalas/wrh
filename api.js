@@ -100,7 +100,7 @@ function authorized(command, username) {
 	const users = db.private('users');
 	var permissions = users[username].permissions;
 
-	return (username in users && (command in permissions || 'any' in permissions));
+	return (username in users && command in api && (command in permissions || 'any' in permissions));
 
 };
 
