@@ -71,31 +71,17 @@ function transaction(req, res) {
 		return;
 	};
 
-	db('trans', utl.formatDate(Date.now()), tr);
+	db('trans', Date.now(), tr);
 
 	res.sendCode(200);
 };
 
 function amount(item, place) {
 	
-	var trans = db('trans');
-	
 	var result = 0;
 	
-	// if (place) {
-	// 	for (t in db('trans')) {
-	// 		if (name === t.name && id === t.id && place.name === t.place.name && place.id === t.place.id) {
-	// 			result += t.amount;
-	// 		}
-	// 	}
-	// } else {
-	// 	for (t in db('trans')) {
-	// 		if (name === t.name && id === t.id) {
-	// 			result += t.amount;
-	// 		}
-	// 	}
-	// }	
-
+	var trans = db('trans');
+	
 	var rule = generateRule(item, place);
 
 	for (t in trans) {
@@ -103,6 +89,10 @@ function amount(item, place) {
 			result += trans[t].amount;
 		}
 	};
+
+	return result;
+
+	///
 
 	function generateRule(item, place) {
 		var checks = [];
@@ -116,12 +106,9 @@ function amount(item, place) {
 		return function (t) {
 			for (var i = checks.length - 1; i >= 0; i--) {
 				if (checks[i][0] != t[checks[i][1]][checks[i][2]]){return false}
-			}
-			return true
-		}
+			};
+			return true;
+		};
 	};
-
-
-	return result;
 };
 
