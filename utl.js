@@ -6,7 +6,7 @@ const path = require('path');
 const cfg = require('./config.json')
 const db = require('./db.js');
 
- var utl = {
+var utl = {
 	parseurl: parseurl,
 	log: log,
 	formatDate: formatDate,
