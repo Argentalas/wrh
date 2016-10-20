@@ -9,6 +9,7 @@ var commands = {};
 commands.echo = echo;
 commands.newname = newname;
 commands.transaction = transaction;
+commands.item = item;
 
 module.exports = commands;
 
