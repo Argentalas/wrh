@@ -54,7 +54,7 @@ function api(req, res) {
 	var command = utl.parseurl(req.url)[1];
 	var username = utl.parseurl(req.url)[2];
 
-	if (!authorized(command, username)) {res.sendCode(403); return};
+	if (!authorized(command, username)) {res.sendCode(403, 'not authorized'); return};
 
 	req.postData=[];
 
