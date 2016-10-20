@@ -30,20 +30,21 @@ function reload(req, res) {
 };
 
 function register(req, res) {
-	var postData = req.postData;
+	var username = req.postData.username;
+	var pass = req.postData.pass;
 
-	if (postData.username in db.private('users')) {
+	if (username in db.private('users')) {
 		res.sendCode(400, 'username taken');
 		return;
 	};
 
-	bcrypt.hash(postData.pass, cfg.saltRounds, (err,hash)=>{
+	bcrypt.hash(pass, cfg.saltRounds, (err,hash)=>{
 		if (err) {
 			res.sendCode(500); 
 			utl.log(`bcrypt error ${err}`);
 			return;
 		};
-		db.private('users', postData.username, {token:hash, permissions:{echo:true}});
+		db.private('users', username, {token:hash, permissions:{echo:true}});
 		res.sendCode(200);
 	});
 };

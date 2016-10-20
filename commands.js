@@ -24,11 +24,24 @@ function echo(request, response){
 	response.send(reply);
 };
 
+function item(req, res) {
+	var item = req.postData.item || {};
+	item.name = item.name || "";
+	item.id = item.id || "";
+
+	if (!(item.name in db('names'))) {
+		res.sendCode(400, 'item unknown');
+		return;
+	};
+
+	res.send(locate(item));
+};
+
 function newname(req, res) {
 	
 	var name = req.postData.itemName;
 
-	if (name in db('names')) {
+	if (name && (name in db('names'))) {
 		res.sendCode(400, 'already exists');
 		return
 	};
@@ -41,12 +54,14 @@ function transaction(req, res) {
 
 	var tr = req.postData.transaction;
 
-	if (!(tr.item.name in db('names'))) {
+	var names = db('names');
+
+	if (!(tr.item.name in names)) {
 		res.sendCode(400, 'item unknown');
 		return;
 	};
 
-	if (!(tr.place.name in db('names'))) {
+	if (!(tr.place.name in names)) {
 		res.sendCode(400, 'place unknown');
 		return;
 	};
@@ -74,6 +89,52 @@ function transaction(req, res) {
 	db('trans', Date.now(), tr);
 
 	res.sendCode(200);
+};
+
+function locate(item) {
+
+	var trans = db('trans');
+
+	var rule = generateRule(item);
+
+	var places = {};
+
+	for (t in trans){
+		if (rule(trans[t])) {
+			places[trans[t].place.name + trans[t].place.id] = trans[t].place;
+		};
+	};
+
+	var total = amount(item);
+
+	for (p in places){
+		let am = amount(item, places[p]);
+		if (am > 0) {
+			places[p].amount = am;
+			places[p].total = total;
+		} else {
+			delete places[p];
+		};
+	};
+
+	return places;
+
+	///
+
+	function generateRule(item) {
+		var checks = [];
+		checks.push([item.name, 'item', 'name']);
+		if (item.id) {
+			checks.push([item.id, 'item', 'id'])
+		};
+
+		return function (t) {
+			for (var i = checks.length - 1; i >= 0; i--) {
+				if(checks[i][0] != t[checks[i][1]][checks[i][2]]){return false}
+			};
+			return true;
+		};
+	};
 };
 
 function amount(item, place) {
