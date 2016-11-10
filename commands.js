@@ -10,6 +10,7 @@ commands.echo = echo;
 commands.newname = newname;
 commands.transaction = transaction;
 commands.item = item;
+commands.search = search;
 
 module.exports = commands;
 
@@ -23,6 +24,18 @@ function echo(request, response){
 
 	//response.send(data) method sends data back as json; you can also use require('./utl.js').send(data, response) or full functionality of http.ServerResponse https://nodejs.org/dist/latest-v4.x/docs/api/http.html#http_class_http_serverresponse
 	response.send(reply);
+};
+
+function search(req, res) {
+	var query = req.postData.query.toLowerCase();
+	var names = db('names');
+	var list = [];
+
+	for (n in names){
+		if (n.toLowerCase().indexOf(query)+1) {list.push(n)}
+	}
+
+	res.send(list);
 };
 
 function item(req, res) {
@@ -102,7 +115,7 @@ function locate(item) {
 
 	for (t in trans){
 		if (rule(trans[t])) {
-			places[trans[t].place.name + trans[t].place.id] = trans[t].place;
+			places[trans[t].place.name + ' ' + trans[t].place.id] = trans[t].place;
 		};
 	};
 
