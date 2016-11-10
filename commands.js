@@ -35,6 +35,17 @@ function search(req, res) {
 		if (n.toLowerCase().indexOf(query)+1) {list.push(n)}
 	}
 
+	if (list.length === 0){
+		let trans = db('trans');
+
+		for (t in trans){
+			if ((trans[t].item.id.toLowerCase().indexOf(query)+1) &&
+				!(list.indexOf((trans[t].item.name + ' ' + trans[t].item.id).toLowerCase())+1)) {
+				list.push(trans[t].item.name + ' ' + trans[t].item.id)
+			}
+		}
+	}
+
 	res.send(list);
 };
 
