@@ -1,3 +1,21 @@
 #footer {
-	position: sticky;
+	position: fixed;
+	bottom: 1px;
+	padding: 10px;
+}
+
+input {
+	height: 20px;
+	width: 175px;
+	padding: 4px;
+	border: 1px solid black;
+	margin: 5px;
+	vertical-align: middle;
+}
+
+.icon {
+	height: 20px;
+	padding: 4px;
+	border: 1px solid black;
+	vertical-align: middle;
 }
