@@ -1,11 +1,15 @@
 #footer {
 	position: fixed;
-	bottom: 1px;
+	bottom: 0px;
+	left: 0px;
 	padding: 10px;
+	margin: 0px;
+	width: 100%;
+	background: lightgrey;
 }
 
 input {
-	height: 20px;
+	line-height: 20px;
 	width: 175px;
 	padding: 4px;
 	border: 1px solid black;
@@ -13,9 +17,38 @@ input {
 	vertical-align: middle;
 }
 
-.icon {
-	height: 20px;
+#empty {
+	display: inline-block;
+	width: 100px;
+}
+
+button {
+	display: inline-block;
+	line-height: 20px;
 	padding: 4px;
 	border: 1px solid black;
 	vertical-align: middle;
+	background: white;
+}
+
+img {
+	height: 20px;
+	padding: 4px;
+	border: 1px solid black;
+	margin: 5px;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+object {
+	height: 20px;
+	padding: 4px;
+	border: 1px solid black;
+	margin: 5px;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+a {
+	color: black;
 }
