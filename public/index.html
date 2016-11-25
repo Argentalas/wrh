@@ -9,13 +9,23 @@
 	<h1>wrh</h1>
 	<hr>
 	<input type="text" id="searchField" autofocus="true" inputmode="latin">
-	<img id="s" src="/img/search.svg">
+	<img id="searchButton" src="/img/search.svg">
 	<span id="empty"></span>
 	<button id="trans">trans</button>
 	<button id="name">name</button>
+	<button id="loginButton">log in</button>
 	<hr>
 </div>
 <div id="main">
+	<div style="display: none" id="loginForm">
+		<label>email:</label>
+		<input type="text" id="emailField">
+		<br>
+		<label>password:</label>
+		<input type="password" id="passwordField">
+		<br>
+		<button id="goButton">Go</button>
+	</div>
 </div>
 <div id="footer">
 	<a href="https://github.com/Argentalas/wrh">Source code</a>

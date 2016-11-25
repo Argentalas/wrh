@@ -19,7 +19,7 @@ input {
 
 #empty {
 	display: inline-block;
-	width: 100px;
+	width: 25%;
 }
 
 button {
@@ -27,8 +27,15 @@ button {
 	line-height: 20px;
 	padding: 4px;
 	border: 1px solid black;
+	margin: 5px;
 	vertical-align: middle;
 	background: white;
+	min-width: 45px;
+}
+
+#loginButton {
+	position: relative;
+	left: 10%;
 }
 
 img {
@@ -51,4 +58,9 @@ object {
 
 a {
 	color: black;
+}
+
+#loginForm {
+	text-align: right;
+	max-width: 300px;
 }
